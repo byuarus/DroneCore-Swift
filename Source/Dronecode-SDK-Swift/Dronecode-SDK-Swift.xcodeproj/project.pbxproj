@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DF05F5AA206AF8DB00577C1B /* RxSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764062069A03B0069AD3D /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF05F5AB206AF92800577C1B /* backend.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764072069A03B0069AD3D /* backend.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF05F5AC206AF92900577C1B /* BoringSSL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764032069A03B0069AD3D /* BoringSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF05F5AD206AF92900577C1B /* CgRPC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764042069A03B0069AD3D /* CgRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF05F5AE206AF92900577C1B /* Czlib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764022069A03B0069AD3D /* Czlib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF05F5AF206AF92900577C1B /* gRPC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764052069A03B0069AD3D /* gRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF05F5B0206AF92900577C1B /* SwiftProtobuf.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764082069A03B0069AD3D /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF05F5B1206AF92900577C1B /* SwiftProtobufPluginLibrary.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764012069A03B0069AD3D /* SwiftProtobufPluginLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		DF68BF042064617900175337 /* Dronecode_SDK_Swift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF68BEFA2064617900175337 /* Dronecode_SDK_Swift.framework */; };
 		DF68BF092064617900175337 /* Dronecode_SDK_SwiftTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF68BF082064617900175337 /* Dronecode_SDK_SwiftTests.swift */; };
 		DF68BF0B2064617900175337 /* Dronecode_SDK_Swift.h in Headers */ = {isa = PBXBuildFile; fileRef = DF68BEFD2064617900175337 /* Dronecode_SDK_Swift.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -21,6 +29,14 @@
 		DF87640E2069A03B0069AD3D /* RxSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8764062069A03B0069AD3D /* RxSwift.framework */; };
 		DF87640F2069A03B0069AD3D /* backend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8764072069A03B0069AD3D /* backend.framework */; };
 		DF8764102069A03B0069AD3D /* SwiftProtobuf.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DF8764082069A03B0069AD3D /* SwiftProtobuf.framework */; };
+		DF87641F206A9CD20069AD3D /* backend.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764072069A03B0069AD3D /* backend.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF876420206A9CD20069AD3D /* BoringSSL.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764032069A03B0069AD3D /* BoringSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF876421206A9CD20069AD3D /* CgRPC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764042069A03B0069AD3D /* CgRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF876422206A9CD20069AD3D /* Czlib.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764022069A03B0069AD3D /* Czlib.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF876423206A9CD20069AD3D /* gRPC.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764052069A03B0069AD3D /* gRPC.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF876424206A9CD20069AD3D /* RxSwift.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764062069A03B0069AD3D /* RxSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF876425206A9CD20069AD3D /* SwiftProtobuf.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764082069A03B0069AD3D /* SwiftProtobuf.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		DF876426206A9CD20069AD3D /* SwiftProtobufPluginLibrary.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = DF8764012069A03B0069AD3D /* SwiftProtobufPluginLibrary.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +48,43 @@
 			remoteInfo = "Dronecode-SDK-Swift";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		DF05F5A9206AF8CD00577C1B /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DF05F5AB206AF92800577C1B /* backend.framework in CopyFiles */,
+				DF05F5AC206AF92900577C1B /* BoringSSL.framework in CopyFiles */,
+				DF05F5AD206AF92900577C1B /* CgRPC.framework in CopyFiles */,
+				DF05F5AE206AF92900577C1B /* Czlib.framework in CopyFiles */,
+				DF05F5AF206AF92900577C1B /* gRPC.framework in CopyFiles */,
+				DF05F5B0206AF92900577C1B /* SwiftProtobuf.framework in CopyFiles */,
+				DF05F5B1206AF92900577C1B /* SwiftProtobufPluginLibrary.framework in CopyFiles */,
+				DF05F5AA206AF8DB00577C1B /* RxSwift.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DF87641E206A9CB40069AD3D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				DF87641F206A9CD20069AD3D /* backend.framework in CopyFiles */,
+				DF876420206A9CD20069AD3D /* BoringSSL.framework in CopyFiles */,
+				DF876421206A9CD20069AD3D /* CgRPC.framework in CopyFiles */,
+				DF876422206A9CD20069AD3D /* Czlib.framework in CopyFiles */,
+				DF876423206A9CD20069AD3D /* gRPC.framework in CopyFiles */,
+				DF876424206A9CD20069AD3D /* RxSwift.framework in CopyFiles */,
+				DF876425206A9CD20069AD3D /* SwiftProtobuf.framework in CopyFiles */,
+				DF876426206A9CD20069AD3D /* SwiftProtobufPluginLibrary.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		DF68BEFA2064617900175337 /* Dronecode_SDK_Swift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Dronecode_SDK_Swift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,6 +219,7 @@
 				DF68BEF62064617900175337 /* Frameworks */,
 				DF68BEF72064617900175337 /* Headers */,
 				DF68BEF82064617900175337 /* Resources */,
+				DF87641E206A9CB40069AD3D /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -183,6 +237,7 @@
 				DF68BEFF2064617900175337 /* Sources */,
 				DF68BF002064617900175337 /* Frameworks */,
 				DF68BF012064617900175337 /* Resources */,
+				DF05F5A9206AF8CD00577C1B /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -329,9 +384,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -383,8 +438,9 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				ONLY_ACTIVE_ARCH = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -466,6 +522,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63A74UA3T4;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../bin";
 				INFOPLIST_FILE = "Dronecode-SDK-SwiftTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.dronecode.Dronecode-SDK-SwiftTests";
@@ -481,6 +538,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 63A74UA3T4;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/../bin";
 				INFOPLIST_FILE = "Dronecode-SDK-SwiftTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.dronecode.Dronecode-SDK-SwiftTests";

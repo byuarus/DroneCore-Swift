@@ -1,11 +1,3 @@
-//
-//  Action.swift
-//  DroneCore-Swift
-//
-//  Created by Jones on 12.03.18.
-//  Copyright © 2018 Dronecode. All rights reserved.
-//
-
 import backend
 import Foundation
 import gRPC

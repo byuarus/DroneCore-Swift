@@ -1,12 +1,5 @@
-//
-//  Dronecode_SDK_SwiftTests.swift
-//  Dronecode-SDK-SwiftTests
-//
-//  Created by Jones on 22.03.18.
-//  Copyright © 2018 Dronecode. All rights reserved.
-//
-
 import XCTest
+import RxSwift
 @testable import Dronecode_SDK_Swift
 
 class Dronecode_SDK_SwiftTests: XCTestCase {
@@ -22,8 +15,13 @@ class Dronecode_SDK_SwiftTests: XCTestCase {
     }
     
     func testExample() {
+        let a = 1+1
+        print("a: \(a)")
+        let action = Action()
+        action.arm().subscribe()
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        XCTAssertTrue(false)
     }
     
     func testPerformanceExample() {
@@ -31,6 +29,7 @@ class Dronecode_SDK_SwiftTests: XCTestCase {
         self.measure {
             // Put the code you want to measure the time of here.
         }
+        XCTAssertTrue(true)
     }
     
 }
