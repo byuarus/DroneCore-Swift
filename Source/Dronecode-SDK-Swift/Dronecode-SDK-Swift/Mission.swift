@@ -150,21 +150,14 @@ public class Mission {
             let missionProgressRequest = Dronecore_Rpc_Mission_SubscribeMissionProgressRequest()
             
             do {
-                print("Enter MissionProgressObservable")
                 let call = try self.service.subscribemissionprogress(missionProgressRequest, completion: nil)
-                print("Create a Call MissionProgressObservable")
                 while let response = try? call.receive() {
-                    print("Response MissionProgressObservable")
                     let missionProgres = MissionProgress(currentItemIndex: response.currentItemIndex , missionCount: response.missionCount)
-                    print("MissionProgres in MissionProgressObservable : \(missionProgres.currentItemIndex)/ \(missionProgres.missionCount)")
                     observer.onNext(missionProgres)
-                    print("After OnNext MissionProgressObservable")
                 }
             } catch {
-                print("Failed to subscribe to discovery stream. MissionProgressObservable")
                 observer.onError("Failed to subscribe to discovery stream")
             }
-            print("Disposables.create() MissionProgressObservable")
             return Disposables.create()
         }.subscribeOn(self.scheduler)
     }
