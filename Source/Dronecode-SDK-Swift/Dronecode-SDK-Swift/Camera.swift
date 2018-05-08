@@ -2,6 +2,7 @@ import Foundation
 import gRPC
 import RxSwift
 
+
 public enum CameraMode {
     case unknown
     case photo
@@ -58,8 +59,69 @@ public class Camera {
             setCameraModeRequest.cameraMode = mode.rpcCameraMode
 
             do {
-                let _ = try self.service.setmode(setCameraModeRequest)
-                completable(.completed)
+                let setCameraModeResponse = try self.service.setmode(setCameraModeRequest)
+                if setCameraModeResponse.cameraResult.result == Dronecore_Rpc_Camera_CameraResult.Result.success {
+                    completable(.completed)
+                } else {
+                    completable(.error("Cannot set camera mode: \(setCameraModeResponse.cameraResult.result)"))
+                }
+            } catch {
+                completable(.error(error))
+            }
+            
+            return Disposables.create {}
+        }
+    }
+    
+    public func takePhoto() -> Completable {
+        return Completable.create { completable in
+            let takePhotoRequest = Dronecore_Rpc_Camera_TakePhotoRequest()
+            
+            do {
+                let takePhotoResponse = try self.service.takephoto(takePhotoRequest)
+                if takePhotoResponse.cameraResult.result == Dronecore_Rpc_Camera_CameraResult.Result.success {
+                    completable(.completed)
+                } else {
+                    completable(.error("Cannot take photo: \(takePhotoResponse.cameraResult.result)"))
+                }
+            } catch {
+                completable(.error(error))
+            }
+            return Disposables.create {}
+        }
+    }
+    
+    public func startPhotoInteval(interval: Float) -> Completable {
+        return Completable.create { completable in
+            var startPhotoIntervalRequest = Dronecore_Rpc_Camera_StartPhotoIntervalRequest()
+            startPhotoIntervalRequest.intervalS = interval
+            
+            do {
+                let startPhotoIntevalResponse = try self.service.startphotointerval(startPhotoIntervalRequest)
+                if startPhotoIntevalResponse.cameraResult.result == Dronecore_Rpc_Camera_CameraResult.Result.success {
+                    completable(.completed)
+                } else {
+                    completable(.error("Cannot start photo interval: \(startPhotoIntevalResponse.cameraResult.result)"))
+                }
+            } catch {
+                completable(.error(error))
+            }
+            
+            return Disposables.create {}
+        }
+    }
+    
+    public func stopPhotoInterval() -> Completable {
+        return Completable.create { completable in
+            let stopPhotoIntervalRequest = Dronecore_Rpc_Camera_StopPhotoIntervalRequest()
+            
+            do {
+                let stopPhotoIntervalResponse = try self.service.stopphotointerval(stopPhotoIntervalRequest)
+                if stopPhotoIntervalResponse.cameraResult.result == Dronecore_Rpc_Camera_CameraResult.Result.success {
+                    completable(.completed)
+                } else {
+                    completable(.error("Cannot stop photo interval: \(stopPhotoIntervalResponse.cameraResult.result)"))
+                }
             } catch {
                 completable(.error(error))
             }
@@ -86,6 +148,6 @@ public class Camera {
                 observer.onError("Failed to subscribe to camera mode stream")
             }
             return Disposables.create()
-        }.subscribeOn(self.scheduler)
+        }
     }
 }
