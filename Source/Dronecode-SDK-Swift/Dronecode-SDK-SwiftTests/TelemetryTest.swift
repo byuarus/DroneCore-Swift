@@ -1,6 +1,7 @@
-import RxTest
-import RxSwift
 import XCTest
+import RxSwift
+import RxTest
+
 @testable import Dronecode_SDK_Swift
 
 class TelemetryTest: XCTestCase {

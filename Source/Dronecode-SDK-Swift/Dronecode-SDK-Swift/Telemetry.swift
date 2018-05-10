@@ -7,7 +7,21 @@ public struct Position: Equatable {
     public let longitudeDeg: Double
     public let absoluteAltitudeM: Float
     public let relativeAltitudeM: Float
-
+    
+    internal static func createCameraRPC(_ position: Position) -> Dronecore_Rpc_Camera_Position {
+        var rpcPosition = Dronecore_Rpc_Camera_Position()
+        rpcPosition.latitudeDeg = position.latitudeDeg
+        rpcPosition.longitudeDeg = position.longitudeDeg
+        rpcPosition.absoluteAltitudeM = position.absoluteAltitudeM
+        rpcPosition.relativeAltitudeM = position.relativeAltitudeM
+        
+        return rpcPosition
+    }
+    
+    internal static func createCameraFromRPC(_ rpcCameraPosition: Dronecore_Rpc_Camera_Position) -> Position {
+        return Position(latitudeDeg: rpcCameraPosition.latitudeDeg, longitudeDeg: rpcCameraPosition.longitudeDeg, absoluteAltitudeM: rpcCameraPosition.absoluteAltitudeM, relativeAltitudeM: rpcCameraPosition.relativeAltitudeM)
+    }
+    
     public static func == (lhs: Position, rhs: Position) -> Bool {
         return lhs.latitudeDeg == rhs.latitudeDeg
             && lhs.longitudeDeg == rhs.longitudeDeg
@@ -24,7 +38,7 @@ public struct Health: Equatable {
     public let isLocalPositionOk: Bool
     public let isGlobalPositionOk: Bool
     public let isHomePositionOk: Bool
-
+    
     public static func == (lhs: Health, rhs: Health) -> Bool {
         return lhs.isGyrometerCalibrationOk == rhs.isGyrometerCalibrationOk
             && lhs.isAccelerometerCalibrationOk == rhs.isAccelerometerCalibrationOk
@@ -59,77 +73,63 @@ public struct EulerAngle: Equatable {
 }
 
 public class Telemetry {
-    let service: Dronecore_Rpc_Telemetry_TelemetryServiceService
-    let scheduler: SchedulerType
-
+    private let service: Dronecore_Rpc_Telemetry_TelemetryServiceService
+    private let scheduler: SchedulerType
+    
+    public lazy var positionObservable: Observable<Position> = createPositionObservable()
+    public lazy var healthObservable: Observable<Health> = createHealthObservable()
+    public lazy var batteryObservable: Observable<Battery> = createBatteryObservable()
+    public lazy var attitudeEulerObservable: Observable<EulerAngle> = createAttitudeEulerObservable()
+    public lazy var cameraAttitudeEulerObservable: Observable<EulerAngle> = createCameraAttitudeEulerObservable()
+    
     public convenience init(address: String, port: Int) {
         let service = Dronecore_Rpc_Telemetry_TelemetryServiceServiceClient(address: "\(address):\(port)", secure: false)
         let scheduler = ConcurrentDispatchQueueScheduler(qos: .background)
-
+        
         self.init(service: service, scheduler: scheduler)
     }
-
+    
     init(service: Dronecore_Rpc_Telemetry_TelemetryServiceService, scheduler: SchedulerType) {
         self.service = service
         self.scheduler = scheduler
     }
     
-    public lazy var positionObservable: Observable<Position> = {
-        return createPositionObservable()
-    }()
-    
-    public lazy var healthObservable: Observable<Health> = {
-        return createHealthObservable()
-    }()
-    
-    public lazy var batteryObservable: Observable<Battery> = {
-        return createBatteryObservable()
-    }()
-    
-    public lazy var attitudeEulerObservable: Observable<EulerAngle> = {
-        return createAttitudeEulerObservable()
-    }()
-    
-    public lazy var cameraAttitudeEulerObservable: Observable<EulerAngle> = {
-        return createCameraAttitudeEulerObservable()
-    }()
-    
     private func createPositionObservable() -> Observable<Position> {
         return Observable.create { observer in
             let positionRequest = Dronecore_Rpc_Telemetry_SubscribePositionRequest()
-
+            
             do {
                 let call = try self.service.subscribeposition(positionRequest, completion: nil)
                 while let response = try? call.receive() {
                     let position = Position(latitudeDeg: response.position.latitudeDeg, longitudeDeg: response.position.longitudeDeg, absoluteAltitudeM: response.position.absoluteAltitudeM, relativeAltitudeM: response.position.relativeAltitudeM)
-
+                    
                     observer.onNext(position)
                 }
             } catch {
                 observer.onError("Failed to subscribe to discovery stream")
             }
-
+            
             return Disposables.create()
-        }.subscribeOn(self.scheduler)
+            }.subscribeOn(self.scheduler)
     }
     
     private func createHealthObservable() -> Observable<Health> {
         return Observable.create { observer in
             let healthRequest = Dronecore_Rpc_Telemetry_SubscribeHealthRequest()
-
+            
             do {
                 let call = try self.service.subscribehealth(healthRequest, completion: nil)
                 while let response = try? call.receive() {
                     let health = Health(isGyrometerCalibrationOk: response.health.isGyrometerCalibrationOk, isAccelerometerCalibrationOk: response.health.isAccelerometerCalibrationOk, isMagnetometerCalibrationOk: response.health.isMagnetometerCalibrationOk, isLevelCalibrationOk: response.health.isLevelCalibrationOk, isLocalPositionOk: response.health.isLocalPositionOk, isGlobalPositionOk: response.health.isGlobalPositionOk, isHomePositionOk: response.health.isHomePositionOk)
-
+                    
                     observer.onNext(health)
                 }
             } catch {
                 observer.onError("Failed to subscribe to health stream")
             }
-
+            
             return Disposables.create()
-        }.subscribeOn(self.scheduler)
+            }.subscribeOn(self.scheduler)
     }
     
     private func createBatteryObservable() -> Observable<Battery> {
@@ -140,7 +140,7 @@ public class Telemetry {
                 let call = try self.service.subscribebattery(batteryRequest, completion: nil)
                 while let response = try? call.receive() {
                     let battery = Battery(remainingPercent: response.battery.remainingPercent, voltageV: response.battery.voltageV)
-    
+                    
                     observer.onNext(battery)
                 }
             } catch {
@@ -148,7 +148,7 @@ public class Telemetry {
             }
             
             return Disposables.create()
-        }.subscribeOn(self.scheduler)
+            }.subscribeOn(self.scheduler)
     }
     
     private func createAttitudeEulerObservable() -> Observable<EulerAngle> {
