@@ -1,15 +1,15 @@
 //
-//  Dronecode_SDK_SwiftTests.swift
-//  Dronecode-SDK-SwiftTests
+//  DronecodeSDKSwiftDemoTests.swift
+//  DronecodeSDKSwiftDemoTests
 //
-//  Created by Jones on 22.03.18.
-//  Copyright © 2018 Dronecode. All rights reserved.
+//  Created by Marjory Silvestre on 05.04.18.
+//  Copyright © 2018 Marjory Silvestre. All rights reserved.
 //
 
 import XCTest
-@testable import Dronecode_SDK_Swift
+@testable import DronecodeSDKSwiftDemo
 
-class Dronecode_SDK_SwiftTests: XCTestCase {
+class DronecodeSDKSwiftDemoTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
